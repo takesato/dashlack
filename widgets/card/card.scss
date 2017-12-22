@@ -1,0 +1,49 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:  #333333;
+
+$title-color:       rgba(255, 255, 255, 1);
+$moreinfo-color:    rgba(255, 255, 255, 1);
+
+// ----------------------------------------------------------------------------
+// Widget-text styles
+// ----------------------------------------------------------------------------
+.widget-card {
+
+  background-color: $background-color;
+  background-width: 0;
+  background-height: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  .name {
+    color: $title-color;
+  }
+
+  .slack-status {
+    color: $moreinfo-color;
+  }
+
+  .updated-at {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+
+  &.large h3 {
+    font-size: 65px;
+  }
+
+  .outline {
+    text-shadow: black 2px 0px 0px, black -2px 0px 0px,
+    black 0px -2px 0px, black 0px 2px 0px,
+    black 2px 2px 0px, black -2px 2px 0px,
+    black 2px -2px 0px, black -2px -2px 0px,
+    black 1px 2px 0px, black -1px 2px 0px,
+    black 1px -2px 0px, black -1px -2px 0px,
+    black 2px 1px 0px, black -2px 1px 0px,
+    black 2px -1px 0px, black -2px -1px 0px,
+    black 1px 1px 0px, black -1px 1px 0px,
+    black 1px -1px 0px, black -1px -1px 0px;
+  }
+}

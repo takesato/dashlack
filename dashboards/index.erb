@@ -1,0 +1,16 @@
+<% content_for :title do %>member status<% end %>
+<script type='text/javascript'>
+$(function() {
+  Dashing.numColumns = 4
+});
+</script>
+
+<div class="gridster">
+  <ul>
+    <% params[:ids].split(",").each do |id| %>
+      <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+        <div data-id="<%= id %>" data-view="Card" data-title=""  data-status="" data-moreinfo=""></div>
+      </li>
+    <% end %>
+  </ul>
+</div>
