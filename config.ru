@@ -1,5 +1,7 @@
 require 'dashing'
+require 'dotenv/load'
 
+Dotenv.load
 configure do
   set :auth_token, '1234'
 

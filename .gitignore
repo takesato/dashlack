@@ -1,4 +1,6 @@
 *DS_STORE
+.bundle
+.env
 history.yml
 tmp/
 log/

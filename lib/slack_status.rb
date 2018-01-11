@@ -21,10 +21,14 @@ class Slack
   end
 
   def users
-    get_objects('users.list', 'members', presence: true)
+    get_objects('users.list', 'members', presence: false)
   end
 
   def user(id)
     get_objects('users.info', 'user', user: id)
+  end
+
+  def get_presence(id)
+    get_objects('users.getPresence', 'presence', user: id)
   end
 end
