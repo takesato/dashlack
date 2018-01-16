@@ -2,7 +2,10 @@
 
 require 'json'
 
-TOKEN=ENV['SLACK_TOKEN']
+require 'dotenv/load'
+
+Dotenv.load
+p TOKEN=ENV['SLACK_TOKEN']
 
 class A
   def change_status(uid, presence, force = false)
@@ -14,6 +17,7 @@ class A
     name = user["profile"]["real_name"]
     status = user["profile"]["status_text"]
     img = user["profile"]["image_512"] || user["profile"]["image_original"]
+    p "#{Time.now.to_strftime('%Y/%m/%d %H:%i:%s')} #{uid} #{name} #{presence}"
     send_event(uid, {name: name, slackStatus: status, text: "", img: img, presence: presence == "active"})
   end
 
@@ -36,13 +40,16 @@ SCHEDULER.in '1m' do
   @slack = Slack.new(TOKEN)
   @slack.users.each do |user|
     uid = user["id"]
-    sleep 1
-    presence = @slack.get_presence(uid)
-    name = user["profile"]["real_name"]
-    status = user["profile"]["status_text"]
-    img = user["profile"]["image_512"] || user["profile"]["image_original"]
-    puts "#{uid} #{name} #{presence}"
-    send_event(uid, {name: name, slackStatus: status, text: "", img: img, presence: presence == "active"})
+    begin
+      sleep 1
+      presence = @slack.get_presence(uid)
+      name = user["profile"]["real_name"]
+      status = user["profile"]["status_text"]
+      img = user["profile"]["image_512"] || user["profile"]["image_original"]
+      puts "#{uid} #{name} #{presence}"
+      send_event(uid, {name: name, slackStatus: status, text: "", img: img, presence: presence == "active"})
+    rescue
+    end
   end
 end
 

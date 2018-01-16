@@ -4,11 +4,9 @@ WORKDIR "/app"
 COPY . "/app"
 
 RUN apk --no-cache update \
- && apk --update add build-base \
+ && apk --update add build-base nodejs \
  && rm -rf /var/cache/apk/* \
  && cd /app \
  && bundle install
 
-
-CMD ["bundle", "exec", "dashing", "start", "-d"]
-
+CMD ["bundle", "exec", "dashing", "start"]

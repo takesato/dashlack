@@ -16,7 +16,7 @@ class Slack
   ## get a channel, group, im or user list
   def get_objects(method, key, params = {})
     self.class.get("/#{method}", query: { token: @token }.merge(params)).tap do |response|
-      raise "error retrieving #{key} from #{method}: #{response.fetch('error', 'unknown error')}" unless response['ok']
+      p "error retrieving #{key} from #{method}: #{response.fetch('error', 'unknown error')}" unless response['ok']
     end.fetch(key)
   end
 
